@@ -1,6 +1,6 @@
 # Brief
 
-API for user management
+API for record storage where user can create, update, delete and view records.
 
 ## Requirements
 
