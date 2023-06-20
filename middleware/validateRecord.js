@@ -39,14 +39,3 @@ async function checkExistingRecord(email, phone) {
         throw new Error(error.message);
     }
 }
-
-
-
-
-
-
-
-
-
-
-
