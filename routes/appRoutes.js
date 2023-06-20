@@ -16,6 +16,6 @@ router.get('/records/:id',validateRecord, appController.getRecordById);
 router.put('/records/:id',validateRecord, appController.updateRecord);
 
 // Delete a record
-router.delete('/records/:id',validateRecord, appController.deleteRecord);
+router.delete('/records/:id',appController.deleteRecord);
 
 module.exports = router;
