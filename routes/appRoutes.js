@@ -7,10 +7,10 @@ const { validateRecord } = require('../middleware/validateRecord');
 router.post('/records',validateRecord, appController.createRecord);
 
 // Get all records
-router.get('/records',validateRecord, appController.getAllRecords);
+router.get('/records',appController.getAllRecords);
 
 // Get a record by ID
-router.get('/records/:id',validateRecord, appController.getRecordById);
+router.get('/records/:id',appController.getRecordById);
 
 // Update a record
 router.put('/records/:id',validateRecord, appController.updateRecord);
