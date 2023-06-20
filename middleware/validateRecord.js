@@ -9,23 +9,35 @@ const recordSchema = Joi.object({
 
 module.exports = {
     async validateRecord(req, res, next) {
-        const { name, email, phone } = req.body;
-
-        // check for existing record
-        const existingRecord = await checkExistingRecord(email, phone);
-        if (existingRecord) {
-            return res.status(409).json({ error: 'Record already exists' });
+      const { email, phone } = req.body;
+  
+      // check for existing record
+      const existingRecord = await checkExistingRecord(email, phone);
+  
+      if (existingRecord) {
+        let errorMessage = 'Record already exists';
+  
+        if (existingRecord.email === email) {
+          errorMessage += ` with the email: ${email}`;
         }
-
-        const { error } = recordSchema.validate(req.body);
-
-        if (error) {
-            return res.status(400).json({ error: error.details[0].message });
+  
+        if (existingRecord.phone === phone) {
+          errorMessage += ` with the phone number: ${phone}`;
         }
-
-        next();
+  
+        return res.status(409).json({ error: errorMessage });
+      }
+  
+      const { error } = recordSchema.validate(req.body);
+  
+      if (error) {
+        return res.status(400).json({ error: error.details[0].message });
+      }
+  
+      next();
     },
-};
+  };
+  
 
 
 // function to check for existing record
