@@ -10,8 +10,10 @@ API for record storage where user can create, update, delete and view records.
 
 ## Installation
 
-` git clone  https://github.com/amritkh078/user_app`
+` git clone  https://github.com/amritkh078/user_app` 
+
 `cd user_app`
+
 `npm install`
 
 ## Configure app
